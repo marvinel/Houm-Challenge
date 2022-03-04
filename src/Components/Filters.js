@@ -15,20 +15,16 @@ export default function FileSystemNavigator() {
         species,
         setSpecies,
         status,
-        setStatus
-       
+        setStatus    
     } = useContext(AuthContext);
 
-    
 
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
     const [open3, setOpen3] = React.useState(false);
 
-    const handleChange = (event) => {
-        console.log(event.target.value)
-        setGender(event.target.value);
-     
+    const handleChange = (event) => {     
+        setGender(event.target.value);    
     };
     const handleChange2 = (event) => {
         setSpecies(event.target.value);
@@ -37,18 +33,14 @@ export default function FileSystemNavigator() {
         setStatus(event.target.value);
     };
 
-    const handleClose = () => {
-     
-            setOpen(false);
-       
-            setOpen2(false);
-        
-            setOpen3(false);
-        
+    const handleClose = () => {  
+            setOpen(false);       
+            setOpen2(false);        
+            setOpen3(false);      
     };
 
     const handleOpen = (event) => {
-        console.log(event.target.id)
+      
 
         if(event.target.id === "demo-controlled-open-select"){
             setOpen(true);
@@ -61,7 +53,6 @@ export default function FileSystemNavigator() {
     };
     return (
         <div>
-
             <div>
                 <h3>Filter by</h3>
                 <FormControl sx={{ m: 1, minWidth: 120 }}>
@@ -82,11 +73,10 @@ export default function FileSystemNavigator() {
                         <MenuItem value="Male">Male</MenuItem>
                         <MenuItem value="Female">Female</MenuItem>    
                         <MenuItem value="Genderless">Genderless</MenuItem>
-                        <MenuItem value="Unknown">Unknown</MenuItem>
-                        
+                        <MenuItem value="Unknown">Unknown</MenuItem>                       
                     </Select>
-
                 </FormControl>
+
                 <FormControl sx={{ m: 1, minWidth: 120 }}>
                     <InputLabel id="demo-controlled-open-select-label2">Species</InputLabel>
                     <Select
@@ -102,11 +92,16 @@ export default function FileSystemNavigator() {
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
+                        <MenuItem value="Alien">Alien</MenuItem>
+                        <MenuItem value="Cronenberg">Cronenberg</MenuItem>
                         <MenuItem value="Human">Human</MenuItem>
+                        <MenuItem value="Humanoid">Humanoid</MenuItem>
                         <MenuItem value="Robot">Robot</MenuItem>
+                        <MenuItem value="Mythological Creature">Mythological Creature</MenuItem>                      
                         <MenuItem value="unknown">unknown</MenuItem>
                     </Select>
                 </FormControl>
+                
                 <FormControl sx={{ m: 1, minWidth: 120 }}>
                     <InputLabel id="demo-controlled-open-select-label3">Status</InputLabel>
                     <Select

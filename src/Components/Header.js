@@ -12,7 +12,6 @@ function Header(props) {
     const [stick, setStick] = useState("App-header")
     const [search, setSearch] = useState("");
     const {
-        name,
         setName,
         gender,
         species,
@@ -30,24 +29,19 @@ function Header(props) {
 
     const getsearch = (e) => {
         setSearch(e.target.value)
-
     }
     const buscar = () => {
-        console.log("genero: " + gender)
+      
         axios.get(`https://rickandmortyapi.com/api/character?name=` + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
-            .then(res => {
-                console.log(res)
+            .then(res => {            
                 setName(search)
                 setDatalist(res.data)
-
             })
             .catch(err => {
                 console.log(err)
                 setDatalist({})
             })
-
     }
-
 
     return (
         <header className={stick}>
@@ -63,7 +57,6 @@ function Header(props) {
 
             <div >
                 <Paper className='search'
-                    //  component="form"
                     sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
                 >
                     <InputBase
@@ -78,9 +71,7 @@ function Header(props) {
                     </IconButton>
                 </ Paper>
             </div>
-
         </header>
-
     );
 }
 

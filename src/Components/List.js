@@ -1,27 +1,17 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import emptysearch from '../assets/emptysearch.json';
-
 import { AuthContext } from '../Context/Authprovider';
 import Pagination from '@mui/material/Pagination';
-
-
 import Card from '@mui/material/Card';
-
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-
-import Typography from '@mui/material/Typography';
-
 import Grid from '@mui/material/Grid';
 
 function List() {
-
-
     const [page, setPage] = useState(1)
 
-
+    //variables globales 
     const {
         name,
         gender,
@@ -29,20 +19,16 @@ function List() {
         species,
         datalist,
         setDatalist
-
     } = useContext(AuthContext);
 
     useEffect(() => {
-        // obteniendo info para la lista de personajes
-        console.log("busqueda: " + name)
+        // Obteniendo informacion para la lista de personajes que se actualiza siempre que cambie algun filtro     
         axios.get(`https://rickandmortyapi.com/api/character?page=` + page + "&name="+name+"&gender=" + gender + "&species=" + species + "&status=" + status)
-            .then(res => {
-                console.log(res)
+            .then(res => {             
                 setDatalist(res.data)
             })
             .catch(err => {
                 console.log(err)
-
             })
 
     }, [page, gender, species, status,name]);
@@ -51,23 +37,16 @@ function List() {
         setPage(value);
     }
 
-
-    if (!datalist.info) {
-        console.log(datalist)
+    if (!datalist.info) {   
         return (
             <>
                <Lottie animationData={emptysearch} style ={{width: "50%", margin: '0 auto'}} />
             </>
-
-
         );
-
     } else {
         return (
             <div className="List">
-
                 <h1>Character List</h1>
-
                 {datalist.vacio ? < div> No hay registros</div> :
                     <div>
                         <div className='characters'>
@@ -83,36 +62,31 @@ function List() {
                                             />
                                             <div className='charactercontent'>
                                                 <div className='charactertitle'>{character.name}</div>
-                                                <p className='characterdescription'>Gender: {character.gender} </p>
-                                                <p className='characterdescription'>Species: {character.species}</p>
-                                                <p className='characterdescription'>Status: {character.status}</p>
+                                                <div>
+                                                    <p className='characterdescription'>Gender: {character.gender} </p>
+                                                    <p className='characterdescription'>Species: {character.species}</p>
+                                                    <p className='characterdescription'>Status: {character.status}</p>
+                                                </div>
 
                                             </div>
-
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="div">
+                                            <div className="titlecard">
+                                                <h3 component="div">
                                                     {character.name}
-                                                </Typography>
-                                            </CardContent>
+                                                </h3>
+                                            </div>
                                         </Card>
                                     </Grid>
-                                ))
-
-                                }
+                                ))}
                             </Grid>
-
                         </div>
-
                         <div className='pagination'>
                             <Pagination className='pagi' count={datalist.info.pages} page={page} onChange={handleChange} />
                         </div>
                     </ div>
                 }
-
             </div>
         );
     }
-
 }
 
 export default List;

@@ -10,10 +10,8 @@ function App() {
     <div className="App">
       <Header />
       <div className='content'>
-       
         <List />
       </div>
-
     </div>
   );
 }

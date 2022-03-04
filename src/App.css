@@ -85,7 +85,7 @@ width: 100%;
 height: 100%;
 background-color: rgba(0,0,0,0.6);
 color: #ffffff;
-font-family: 'Quicksand', sans-serif;
+
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -104,6 +104,9 @@ transition: opacity 0.25s;
 
 .charactercontent:hover > * {
     transform: translateY(0px);
+}
+.titlecard:hover{
+    opacity: 0;
 }
 .charactertitle{
     font-size: 2em;

@@ -9,13 +9,8 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 
-
-import GmailTreeView from './Treee';
+import Filters from './Filters';
 const drawerWidth = 240;
-
-
-
-
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -40,7 +35,6 @@ export default function PersistentDrawerLeft() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      
       <Drawer
         sx={{
           width: drawerWidth,
@@ -60,14 +54,14 @@ export default function PersistentDrawerLeft() {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
+
         <Divider />
 
-          <ListItem>
-            <GmailTreeView />
-          </ListItem>
- 
-
+        <ListItem>
+          <Filters />
+        </ListItem>
       </Drawer>
+
       <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -76,9 +70,7 @@ export default function PersistentDrawerLeft() {
             sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
             <MenuIcon />
-          </IconButton>
-
-
+      </IconButton>
     </Box>
   );
 }
