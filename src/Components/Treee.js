@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext }  from 'react';
+import React, {  useContext }  from 'react';
 
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -15,8 +15,8 @@ export default function FileSystemNavigator() {
         species,
         setSpecies,
         status,
-        setStatus,
-        setDatalist
+        setStatus
+       
     } = useContext(AuthContext);
 
     

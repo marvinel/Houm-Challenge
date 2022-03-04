@@ -38,7 +38,7 @@ function List() {
                 setDatalist(res.data)
             })
 
-    }, [page]);
+    }, [page,gender,species,status]);
 
     const handleChange = (event, value) => {
         setPage(value);
@@ -54,7 +54,7 @@ function List() {
         return (
             <div className="List">
 
-                <h1>Lista de personajes</h1>
+                <h1>Character List</h1>
 
 
                 <div className='characters'>

@@ -4,19 +4,19 @@
   }
 
 header{
-    display: flex;
-    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
+    padding: 30px 0px;
+    z-index: 1000;
+    position: fixed;
+    box-shadow: rgb(219 219 219 / 25%) 0px 4px 4px;
+    background-color: #ffffff;
     color:#FF452B ;
     transition: 0.6s;
-    padding: 30px 0px;
-    border-bottom: 5px solid rgba(100, 0, 0, 0);
-    z-index: 1000;
+    width: 100%;
 }
 header.sti{
     padding: 5px 0px;
@@ -25,17 +25,38 @@ header.sti{
     background-color: #FF452B;
     
 }
-
+.header-left{
+    display: flex;
+}
+.main-header-logo img{
+    height: 45px;
+    background-color: #ffffff;
+    border-radius: 45px;
+}
 .logo{
-    width: 50%;
+    
     align-items: center;
 }
+.search{
+    width: 400px;
+}
+
 .content{
     
     padding-top: 120px;
     
 }
 
+.List h1{
+    color:#212529;
+    display: block;
+    animation: jss79 ease-out 500ms 0ms both;
+    font-size: 1.625rem;
+    text-align: center;
+    font-weight: 800;
+    line-height: 1.375em;
+    letter-spacing: -0.015em;
+}
 .characters{
     width: 80%;
     margin: 0px auto;
@@ -111,4 +132,16 @@ transition: opacity 0.25s;
     width: 80%;
     font-weight: bold;
     
+}
+
+@media ( max-width: 1080px){
+    header{
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+} 
+@media (max-width: 520px){
+    .search{
+        width: 100%;
+    }
 }

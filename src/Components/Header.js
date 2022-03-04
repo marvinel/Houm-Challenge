@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import SideBar from './SideBar';
 import { AuthContext } from '../Context/Authprovider';
 import axios from 'axios';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
-import Divider from '@mui/material/Divider';
+
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 function Header(props) {
@@ -12,7 +12,7 @@ function Header(props) {
     const [stick, setStick] = useState("App-header")
     const [search, setSearch] = useState("");
     const {
-        setGender,
+        
         gender,
         species,
         status,
@@ -27,40 +27,46 @@ function Header(props) {
     }
     window.addEventListener("scroll", changeheader)
 
-    const getsearch = (e) =>{
+    const getsearch = (e) => {
         setSearch(e.target.value)
-       
+
     }
-    const buscar = ()=>{
-        console.log("genero: "+ gender)
-        axios.get(`https://rickandmortyapi.com/api/character?name=` + search + "&gender=" + gender +"&species="+ species +"&status="+status )
-        .then(res => {
-            console.log(res.data)
-           
-            setDatalist(res.data)
-           
-        })
-       
+    const buscar = () => {
+        console.log("genero: " + gender)
+        axios.get(`https://rickandmortyapi.com/api/character?name=` + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
+            .then(res => {
+                console.log(res.data)
+
+                setDatalist(res.data)
+
+            })
+
     }
 
 
     return (
         <header className={stick}>
-             <SideBar />
-            <div className='logo'>
-                <h2 className='tit'>HOUM </h2>
+            <div className='header-left'>
+                <SideBar />
+                <div className='logo'>
+                    <a href='/' className='main-header-logo'>
+                        <img src="https://lever-client-logos.s3.us-west-2.amazonaws.com/e4b5b544-d8fb-4738-a096-186c0d1c9103-1621371173313.png" alt="logoHoum" />
+                    </a>
+                </div>
             </div>
-            <div>
-                <Paper
-                  //  component="form"
-                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+
+
+            <div >
+                <Paper className='search'
+                    //  component="form"
+                    sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
                 >
                     <InputBase
                         sx={{ ml: 1, flex: 1 }}
                         placeholder="Buscar"
                         inputProps={{ 'aria-label': 'Buscar' }}
-                        value={search }
-                        onChange={getsearch }
+                        value={search}
+                        onChange={getsearch}
                     />
                     <IconButton type="submit" sx={{ p: '10px' }} aria-label="search" onClick={buscar}>
                         <SearchIcon />
