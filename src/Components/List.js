@@ -9,7 +9,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 
 function List() {
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(1);
+    const [changep, setChangep] = useState(false);
 
     //variables globales 
     const {
@@ -23,8 +24,14 @@ function List() {
 
     useEffect(() => {
         // Obteniendo informacion para la lista de personajes que se actualiza siempre que cambie algun filtro     
-        console.log('https://rickandmortyapi.com/api/character?page=' + page + "&name="+name+"&gender=" + gender + "&species=" + species + "&status=" + status)
-        axios.get('https://rickandmortyapi.com/api/character?page=' + page + "&name="+name+"&gender=" + gender + "&species=" + species + "&status=" + status)
+       var page2=1;
+        if(changep){
+            page2 = page
+        }else{
+            page2 = 1
+        }
+        setChangep(false)     
+        axios.get('https://rickandmortyapi.com/api/character?page=' + page2 + "&name="+name+"&gender=" + gender + "&species=" + species + "&status=" + status)
             .then(res => {             
                 setDatalist(res.data)
             })
@@ -37,6 +44,7 @@ function List() {
 
     const handleChange = (event, value) => {
         setPage(value);
+        setChangep(true)
     }
 
     if (!datalist.info) {   

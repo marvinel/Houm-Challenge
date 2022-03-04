@@ -16,7 +16,7 @@ function Header(props) {
         gender,
         species,
         status,
-        setDatalist
+        setDatalist,
     } = useContext(AuthContext);
     const changeheader = () => {
         if (window.scrollY > 0) {
@@ -31,9 +31,8 @@ function Header(props) {
         setSearch(e.target.value)
     }
     const buscar = () => {
-        console.log('https://rickandmortyapi.com/api/character?name=' + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
-        axios.get('https://rickandmortyapi.com/api/character?name=' + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
-            .then(res => {            
+        axios.get('https://rickandmortyapi.com/api/character?page=+' + 1 + 'name=' + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
+            .then(res => {
                 setName(search)
                 setDatalist(res.data)
             })
