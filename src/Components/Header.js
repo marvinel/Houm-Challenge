@@ -68,8 +68,8 @@ function Header(props) {
                 >
                     <InputBase
                         sx={{ ml: 1, flex: 1 }}
-                        placeholder="Buscar"
-                        inputProps={{ 'aria-label': 'Buscar' }}
+                        placeholder="Search"
+                        inputProps={{ 'aria-label': 'Search' }}
                         value={search}
                         onChange={getsearch}
                     />
