@@ -23,12 +23,14 @@ function List() {
 
     useEffect(() => {
         // Obteniendo informacion para la lista de personajes que se actualiza siempre que cambie algun filtro     
-        axios.get(`https://rickandmortyapi.com/api/character?page=` + page + "&name="+name+"&gender=" + gender + "&species=" + species + "&status=" + status)
+        console.log('https://rickandmortyapi.com/api/character?page=' + page + "&name="+name+"&gender=" + gender + "&species=" + species + "&status=" + status)
+        axios.get('https://rickandmortyapi.com/api/character?page=' + page + "&name="+name+"&gender=" + gender + "&species=" + species + "&status=" + status)
             .then(res => {             
                 setDatalist(res.data)
             })
             .catch(err => {
                 console.log(err)
+                setDatalist({})
             })
 
     }, [page, gender, species, status,name]);

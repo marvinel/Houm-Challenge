@@ -31,8 +31,8 @@ function Header(props) {
         setSearch(e.target.value)
     }
     const buscar = () => {
-      
-        axios.get(`https://rickandmortyapi.com/api/character?name=` + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
+        console.log('https://rickandmortyapi.com/api/character?name=' + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
+        axios.get('https://rickandmortyapi.com/api/character?name=' + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
             .then(res => {            
                 setName(search)
                 setDatalist(res.data)
