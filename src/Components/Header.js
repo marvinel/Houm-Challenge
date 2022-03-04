@@ -12,7 +12,8 @@ function Header(props) {
     const [stick, setStick] = useState("App-header")
     const [search, setSearch] = useState("");
     const {
-        
+        name,
+        setName,
         gender,
         species,
         status,
@@ -35,10 +36,14 @@ function Header(props) {
         console.log("genero: " + gender)
         axios.get(`https://rickandmortyapi.com/api/character?name=` + search + "&gender=" + gender + "&species=" + species + "&status=" + status)
             .then(res => {
-                console.log(res.data)
-
+                console.log(res)
+                setName(search)
                 setDatalist(res.data)
 
+            })
+            .catch(err => {
+                console.log(err)
+                setDatalist({})
             })
 
     }
