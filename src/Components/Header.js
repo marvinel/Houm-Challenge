@@ -41,7 +41,11 @@ function Header(props) {
                 setDatalist({})
             })
     }
-
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+          buscar();
+        }
+      }
     return (
         <header className={stick}>
             <div className='header-left'>
@@ -57,6 +61,7 @@ function Header(props) {
             <div >
                 <Paper className='search'
                     sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+                    onKeyPress={handleKeyPress}
                 >
                     <InputBase
                         sx={{ ml: 1, flex: 1 }}
